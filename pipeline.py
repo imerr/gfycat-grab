@@ -285,9 +285,9 @@ class WgetArgs(object):
                 concurrency = 4
         item['concurrency'] = str(concurrency)
         
-        if '--prefer-ipv4' in sys.argv:
+        if os.getenv('PREFER_IPV4'):
             wget_args.extend(["--prefer-family", "IPv4"])
-        elif '--prefer-ipv6' in sys.argv:
+        elif os.getenv('PREFER_IPV6'):
             wget_args.extend(["--prefer-family", "IPv6"])
 
         for item_name in item['item_name'].split('\0'):
